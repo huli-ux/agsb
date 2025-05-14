@@ -342,11 +342,6 @@ def create_config(base_dir, port, password, cert_path, key_path, domain):
                 "rewriteHost": True
             }
         },
-        "bandwidth": {
-            "up": "100 mbps",
-            "down": "100 mbps"
-        },
-        "ignoreClientBandwidth": False,
         "log": {
             "level": "info",
             "output": f"{base_dir}/logs/hysteria.log",
@@ -499,9 +494,6 @@ def show_status():
             print("\n配置信息:")
             print(f"监听端口: {config['listen']}")
             print(f"认证方式: {config['auth']['type']}")
-            if 'bandwidth' in config:
-                print(f"上行带宽: {config['bandwidth']['up']}")
-                print(f"下行带宽: {config['bandwidth']['down']}")
         except:
             print("无法读取配置文件")
     
@@ -642,7 +634,7 @@ def main():
         service_started = start_service(start_script, port, base_dir)
         
         # 生成客户端配置链接
-        config_link = f"hysteria2://{urllib.parse.quote(password)}@{server_address}:{port}?insecure=1&sni={server_address}&bandwidth=100mbps"
+        config_link = f"hysteria2://{urllib.parse.quote(password)}@{server_address}:{port}?insecure=1&sni={server_address}"
         
         print(f"""
 Hysteria2 已成功安装！
@@ -675,7 +667,6 @@ Hysteria2 已成功安装！
 TLS: 启用
 跳过证书验证: 是
 SNI: {server_address}
-带宽: 100mbps
 
 支持的系统:
 - Linux (x86_64, arm64)
