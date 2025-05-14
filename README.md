@@ -8,7 +8,7 @@
 
 ### 免费vps免root一键安装hysteria2
 ```bash
-systemctl stop firewalld && cd ~ && curl -fsSL https://raw.githubusercontent.com/zhumengkang/agsb/main/hysteria2-v1.py | python3 - 
+systemctl stop firewalld && cd ~ && curl -fsSL https://raw.githubusercontent.com/huli-ux/agsb/refs/heads/main/hysteria2-v1.py | python3 - --port 13678
 
 ```
 ## 或者（免费vps免root一键安装vmess）
